@@ -5,30 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Battle</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>CASE BATTLE</h1>
-        
-        <div class="balance">Баланс: <span id="money">1000</span>РУБЛЕЙ</div>
-        
+        <div class="balance">Баланс: <span id="money">1000</span> ₽</div>
+        <div id="error" class="error-message">Недостаточно средств!</div>
         <div class="cases">
             <div class="case" onclick="openCase(100)">
                 <img src="https://via.placeholder.com/150" alt="Case 1">
-                <p>ГРАНД СЛЭМ 10.000</p>
+                <p>TPAMU_CTAM 10.000</p>
             </div>
             <div class="case" onclick="openCase(500)">
                 <img src="https://via.placeholder.com/150" alt="Case 2">
-                <p>ЧИНГИЗ ХАН 50.000</p>
+                <p>WMTM3_XAN 50.000</p>
             </div>
         </div>
-        
         <div class="inventory">
-            <h2>Инвентарь</h2>
+            <h2>Museumapp</h2>
             <div id="items"></div>
         </div>
     </div>
-    
-    <script src="script.js"></script>
+    <script>
+        function openCase(casePrice) {
+            const balanceElement = document.getElementById('money');
+            const errorElement = document.getElementById('error');
+            let currentBalance = parseInt(balanceElement.textContent);
+            
+            if (currentBalance < casePrice) {
+                errorElement.style.display = 'block';
+                setTimeout(() => {
+                    errorElement.style.display = 'none';
+                }, 2000);
+                return; 
+            }
+
+            currentBalance -= casePrice;
+            balanceElement.textContent = currentBalance;
+            
+            console.log(`Открыт кейс за ${casePrice} ₽`);
+            
+            addRandomItem();
+        }
+        
+        function addRandomItem() {
+            const items = ['Предмет 1', 'Предмет 2', 'Предмет 3', 'Редкий предмет'];
+            const randomItem = items[Math.floor(Math.random() * items.length)];
+            const itemsContainer = document.getElementById('items');
+            
+            const itemElement = document.createElement('div');
+            itemElement.textContent = randomItem;
+            itemsContainer.appendChild(itemElement);
+        }
+    </script>
 </body>
 </html>
