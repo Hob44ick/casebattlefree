@@ -2,11 +2,11 @@ let money = 1000;
 const items = [];
 
 const possibleItems = [
-    { name: "Нож | Гут", price: 1000, rarity: "rare" },
-    { name: "AWP | Красная линия", price: 500, rarity: "uncommon" },
+    { name: "Нож | Гут", price: 10000, rarity: "rare" },
+    { name: "AWP | Красная линия", price: 5000, rarity: "uncommon" },
     { name: "Перчатки | Спектр", price: 2000, rarity: "legendary" },
-    { name: "UMP-45 | Хуйня", price: 50, rarity: "common" },
-    { name: "AK-47 | Ягуар", price: 800, rarity: "rare" },
+    { name: "UMP-45 | Хуйня", price: 500, rarity: "common" },
+    { name: "AK-47 | Ягуар", price: 8000, rarity: "rare" },
 ];
 
 function openCase(cost) {
@@ -35,7 +35,7 @@ function updateInventory() {
         itemElement.className = "item";
         itemElement.innerHTML = `
             <p>${item.name}</p>
-            <p>Цена: ${item.price}$ (${item.rarity})</p>
+            <p>Цена: ${item.price}РУБЛИЙ (${item.rarity})</p>
         `;
         inventoryDiv.appendChild(itemElement);
     });
